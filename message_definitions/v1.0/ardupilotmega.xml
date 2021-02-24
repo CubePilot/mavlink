@@ -1677,5 +1677,14 @@
       <field type="float" name="min_distance" units="m">Minimum distance the sensor can measure.</field>
       <field type="float" name="max_distance" units="m">Maximum distance the sensor can measure.</field>
     </message>
+    <message id="11038" name="SECURE_PIN">
+      <description>Send secure pin to unlock various features of drone. PLEASE NOTE: This protocol has been kept simple, so transmitting the key requires an encrypted channel for true safety.</description>
+      <field type="uint32_t" name="pin">pin</field>
+    </message>
+    <message id="11039" name="CHANGE_SECURE_PIN">
+      <description>change secure pin to unlock various features of drone. PLEASE NOTE: This protocol has been kept simple, so transmitting the key requires an encrypted channel for true safety.</description>
+      <field type="uint32_t" name="oldpin">Previously set pin</field>
+      <field type="uint32_t" name="newpin">New Pin to change with</field>
+    </message>
   </messages>
 </mavlink>
