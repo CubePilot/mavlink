@@ -5,6 +5,21 @@
   <!-- email contact: siddharth@cubepilot.com or michael@cubepilot.com      -->
   <!-- mavlink ID range: 50000 - 50099                                      -->
   <include>common.xml</include>
+  <enums>
+    <enum name="CUBEPROBE_OPERATION">
+      <description>CubeProbe Operation</description>
+      <entry value="0" name="CUBEPROBE_OPERATION_READ"/>
+      <entry value="1" name="CUBEPROBE_OPERATION_WRITE"/>
+      <entry value="2" name="CUBEPROBE_OPERATION_RESET"/>
+      <entry value="3" name="CUBEPROBE_OPERATION_MASS_ERASE"/>
+      <entry value="4" name="CUBEPROBE_OPERATION_PROBE"/>
+    </enum>
+    <enum name="CUBEPROBE_RESPONSE">
+      <description>CubeProbe Response</description>
+      <entry value="0" name="CUBEPROBE_RESPONSE_SUCCESS"/>
+      <entry value="1" name="CUBEPROBE_RESPONSE_ERROR"/>
+    </enum>
+  </enums>
   <messages>
     <message id="50001" name="CUBEPILOT_RAW_RC">
       <description>Raw RC Data</description>
@@ -43,6 +58,31 @@
       <field type="uint8_t" name="target_system">System ID.</field>
       <field type="uint8_t" name="target_component">Component ID.</field>
       <field type="uint32_t" name="offset" units="bytes">FW Offset.</field>
+    </message>
+    <message id="50006" name="CUBEPROBE_PROBE_INFO">
+      <description>CubeProbe Scan results</description>
+      <field type="uint8_t" name="probe_port">Probe Port</field>
+      <field type="uint16_t" name="designer_code">Designer Code</field>
+      <field type="uint16_t" name="part_id">Part ID</field>
+    </message>
+    <message id="50007" name="CUBEPROBE_DO_OPERATION">
+      <description>CubeProbe Operation</description>
+      <field type="uint8_t" name="target_system">System ID.</field>
+      <field type="uint8_t" name="target_component">Component ID.</field>
+      <field type="uint8_t" name="probe_port">Probe Port</field>
+      <field type="uint8_t" name="operation" enum="CUBEPROBE_OPERATION">Operation</field>
+      <field type="uint32_t" name="address">Address</field>
+      <field type="uint32_t" name="size">Size</field>
+    </message>
+    <message id="50008" name="CUBEPROBE_RESPONSE">
+      <description>CubeProbe Response</description>
+      <field type="uint8_t" name="target_system">System ID.</field>
+      <field type="uint8_t" name="target_component">Component ID.</field>
+      <field type="uint8_t" name="probe_port">Probe Port</field>
+      <field type="uint8_t" name="operation" enum="CUBEPROBE_OPERATION">Operation</field>
+      <field type="uint8_t" name="response" enum="CUBEPROBE_RESPONSE">Response</field>
+      <field type="uint32_t" name="address">Address</field>
+      <field type="uint32_t" name="size">Size</field>
     </message>
   </messages>
 </mavlink>
