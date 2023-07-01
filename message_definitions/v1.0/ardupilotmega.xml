@@ -1864,5 +1864,48 @@
       <field type="uint16_t[4]" name="rpm" units="rpm">RPM (eRPM).</field>
       <field type="uint16_t[4]" name="count">count of telemetry packets received (wraps at 65535).</field>
     </message>
+    <message id="11050" name="UBX_FW_INFO">
+      <description>UBX firmware information</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+      <!-- <field type="uint8_t" name="index">Index</field> -->
+      <field type="uint8_t" name="version">Firmware version number</field>
+      <field type="uint32_t" name="addr">Address</field>
+      <field type="uint32_t" name="len">Length</field>
+      <field type="uint32_t" name="ck_a">Checksum A</field>
+      <field type="uint32_t" name="ck_b">Checksum B</field>
+    </message>
+    <message id="11051" name="UBX_FW_WRITE_BLOCK">
+      <description>UBX firmware data block</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+      <!-- <field type="uint8_t" name="index">Index</field> -->
+      <field type="uint32_t" name="addr">Address</field>
+      <field type="uint32_t" name="size">Size</field>
+      <field type="uint8_t" name="seq">Sequence number out of 4 chunks</field>
+      <field type="uint32_t[32]" name="data">Firmware data block</field>
+    </message>
+    <message id="11052" name="UBX_FW_ERASE_BLOCK">
+      <description>UBX firmware erase block</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+      <!-- <field type="uint8_t" name="index">Index</field> -->
+      <field type="uint32_t" name="addr">Address</field>
+    </message>
+    <message id="11053" name="UBX_FW_RESP">
+      <description>UBX firmware response</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+      <!-- <field type="uint8_t" name="index">Index</field> -->
+      <field type="uint32_t" name="addr">Address</field>
+      <field type="uint8_t" name="result">Result</field>
+    </message>
+    <message id="11054" name="UBX_ENTER_EXIT_SAFEBOOT">
+      <description>UBX enter/exit safeboot mode</description>
+      <field type="uint8_t" name="target_system">System ID</field>
+      <field type="uint8_t" name="target_component">Component ID</field>
+      <!-- <field type="uint8_t" name="index">Index</field> -->
+      <field type="uint8_t" name="safeboot">Enter/Exit safeboot</field>
+    </message>
   </messages>
 </mavlink>
